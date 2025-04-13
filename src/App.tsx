@@ -1,18 +1,22 @@
 import {io} from 'socket.io-client';
-import {Box} from '@mui/material';
+import {Box, Button} from '@mui/material';
 import {useState} from 'react';
 import {DialogComponent} from './components/DialogComponent.tsx';
 
 export interface UserEntity {
     phone?: string,
-    prepaidCardNumber?: string,
     email?: string,
+    names?: string,
+    lastnames?: string,
+    birthdate?: string
 }
+
+const server = '192.168.1.48';
 
 export const App = () => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [userEntity, setUserEntity] = useState<UserEntity>({});
-    const socket = io('http://localhost:3000');
+    const socket = io(`http://${server}:3000`);
 
     socket.on('on-id-message', (payload: UserEntity) => {
         setIsDialogOpen(true);
@@ -24,12 +28,19 @@ export const App = () => {
         setUserEntity({});
     });
 
+    const handleCall = async () => {
+        await fetch(`http://${server}:3000/clients/call/1733`, { method: 'POST' });
+    }
+
     return (
         <Box>
             <DialogComponent
                 isOpen={isDialogOpen}
                 user={userEntity}
             />
+            <Button onClick={handleCall}>
+                LLAMAR
+            </Button>
         </Box>
     );
 };
