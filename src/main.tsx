@@ -9,6 +9,8 @@ import {App} from './App.tsx';
 import {createTheme, CssBaseline, ThemeProvider} from '@mui/material';
 import {red} from '@mui/material/colors';
 
+import './styles/styles.scss';
+
 const theme = createTheme({
     cssVariables: true,
     palette: {

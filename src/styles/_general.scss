@@ -1,0 +1,23 @@
+strong {
+    color: #37474F;
+}
+
+.names-title {
+    color: #0D47A1 !important;
+    font-weight: bold;
+}
+
+.item-card {
+    cursor: pointer;
+}
+
+.box-container {
+    background: RGBA(42, 123, 155, 0.1);
+    background: linear-gradient(90deg, rgba(42, 123, 155, 0.1) 0%, rgba(237, 221, 83, 0.1) 100%);
+}
+
+.grid-container {
+    padding: .5rem;
+    height: 90vh;
+    overflow-y: auto;
+}
